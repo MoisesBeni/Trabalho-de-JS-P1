@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Peso Ideal</title>
+
+</head>
+<body>
+    <img src="../ex2/foto-ex02.JPG" alt="foto da depuracao">
+    <h1>Cálculo de Peso Ideal</h1>
+    
+    <label for="altura">Altura (cm):</label>
+    <input type="number" id="campoAltura" placeholder="Digite sua altura em centímetros" required>
+
+    <label for="sexo">Sexo:</label>
+    <select id="sexo">
+        <option value="masculino">Masculino</option>
+        <option value="feminino">Feminino</option>
+    </select>
+
+    <button onclick="calcularPesoIdeal()">Calcular Peso Ideal</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcularPesoIdeal() {
+         
+            const campoAltura = document.getElementById("campoAltura");
+            const altura = parseInt(campoAltura.value);
+            const sexo = document.getElementById("sexo").value;
+
+   
+            let pesoIdeal;
+
+            
+            if (isNaN(altura) || altura <= 0) {
+                document.getElementById("resultado").innerText = "Por favor, insira uma altura válida.";
+                return;
+            }
+
+       
+            if (sexo === "masculino") {
+                pesoIdeal = 52 + (0.75 * (altura - 152.4));
+            } else {
+                pesoIdeal = 52 + (0.67 * (altura - 152.4));
+            }
+
+         
+            document.getElementById("resultado").innerText = `Seu peso ideal é: ${pesoIdeal.toFixed(2)} kg.`;
+        }
+    </script>
+</body>
+</html>
